@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var countMost = function(str){
+        var count = 0,
+        temp=0,
+        reg,
+        char;
+        for(let i =0;i<str.length;i++){
+            reg = new RegExp(str.charAt(i),'g')
+            temp=str.match(reg).length;
+            if(temp>count){
+                count=temp
+                char=str.charAt(i)
+            }
+        }
+        return{count:count,char:char}
+    }
+    console.log(countMost('asfasdfxzcasdf'))
+
+    function numberWithCommas(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+   function queryURLParams(){
+       let obj
+      this.replace(/([^?=&#]+)=([^?=&#]+)/g,(...[,$1,$2])=>obj[$1]=$2)
+      this.replace(/#[^?=&#]+/g,(...[,$1])=>obj['HASH']=$1)
+      return obj
+   }
+</script>
+</html>

@@ -9,9 +9,7 @@
 .navbar-nav{
     flex-direction: row;
 }
-.card .card-body .card-text{
-    color:red !important
-}
+
 .nav-link{
     padding-left:0.5rem !important;
     padding-right:0.5rem !important;

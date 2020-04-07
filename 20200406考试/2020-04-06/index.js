@@ -1,28 +1,28 @@
 let shop = (function () {
     let data = null;
-    let productBox = document.querySelector('.productBox');
     let navList = document.querySelectorAll('.navbar-nav .nav-item')
-    let getData = function () {
+    let productBox = document.querySelector('.productBox')
+    function getData() {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', './json/product.json', false);
+        xhr.open('GET', './json/product.json', false)
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 data = JSON.parse(xhr.responseText)
-           
+                
             }
         }
         xhr.send(null)
     }
-    let render = function () {
+    let fn = function () {
         let str = ``;
         data.forEach(function (item) {
             let {
-            id,
-           title,
-           price,
-           time,
-           hot,
-           img 
+                id,
+                title,
+                price,
+                time,
+                hot,
+                img 
             } = item;
             str += `<div class="card" data-price="${price}" data-time="${time}" data-hot="${hot}">
             <img src="${img}" class="card-img-top" alt="...">
@@ -34,48 +34,39 @@ let shop = (function () {
            <a href="#" class="btn btn-primary">立即购买</a>
            </div>
            </div>`
-        
         })
-        productBox.innerHTML=str
+        productBox.innerHTML = str
     }
 
-    let clickBtn = function(){
-        navList=Array.from(navList);
-        navList.forEach(function(item){
-            item.flag=-1;
-            item.onclick=function(){
-                this.flag*=-1
-                let pai = this.getAttribute('data-pai')
-                data.sort((a,b)=>{   
-                    a=a[pai]
-                    b=b[pai]       
-                    if(pai==='time'){
-                        a=a.replace(/-/g,'')
-                        b=b.replace(/-/g,'')
+    let clickBtn = function () {
+        navList = Array.from(navList)
+        navList.forEach(function (item) {
+            item.flag = -1
+            item.onclick = function () {
+                this.flag *= -1
+                pai = this.getAttribute('data-pai')
+                console.log(pai)
+                data.sort((a, b)=> {
+                    a = a[pai]
+                    b = b[pai]
+                    if (pai === 'time') {
+                        a = a.replace(/-/g,'')
+                        b = b.replace(/-/g,'')
                     }
-                  return (a-b)*this.flag
+                   return (a-b)*this.flag
+                    
                 })
-                render()
+                fn()
             }
-           
         })
     }
-
-    
-
-
-
-
     return {
         init() {
             getData();
-            render();
-            clickBtn();
+                fn();
+                clickBtn();
         }
-
     }
 
-
 })()
-
 shop.init()
