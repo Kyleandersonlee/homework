@@ -1,0 +1,40 @@
+.container{
+    box-sizing: border-box;
+    margin:20px auto;
+    width:760px;
+
+}
+.container .coloum{
+    box-sizing: border-box;
+    width:240px;
+    float:left;
+    margin-right:20px
+}
+.container .coloum:nth-last-child(1){
+    margin-right:0
+}
+.container .coloum .card a{
+    display: block;
+    box-shadow: 3px 3px 10px 0 #222;
+    background-color: #fff;
+}
+.container .coloum .card a .lazyImageBox{
+ 
+ overflow:hidden;
+
+}
+.container .coloum .card a .lazyImageBox img{
+ height: 100%;
+ width:100%;
+ width:240px;
+ opacity: 0;
+ transition: opacity .3s ease;
+ 
+}
+.container .coloum .card a  p
+{
+      margin-top: 5px;
+      font-size: 15px;
+    line-height: 20px;
+
+}
